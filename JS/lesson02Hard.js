@@ -1,4 +1,4 @@
-let num = 266219; //266219
+let num = 266219;
 let stringNum;
 let multiplyNum = 1;
 let powerNum = 0;
