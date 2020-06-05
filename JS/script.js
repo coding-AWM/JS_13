@@ -3,4 +3,4 @@ let income;
 let addExpenses;
 let deposit;
 let mission;
-let perio;
+let period;
