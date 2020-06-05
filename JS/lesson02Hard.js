@@ -15,6 +15,3 @@ powerNum = multiplyNum**3;
 
 stringPower = String(powerNum);
 console.log(stringPower.slice(0, 2));
-
-
-
