@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.language {
+.languageRu, .languageEn {
     display: none;
 }
 .langRu, .langEn {

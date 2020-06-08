@@ -1,6 +1,7 @@
 'use strict';
 
-let language = document.querySelector('.language');
+let languageRu = document.querySelector('.languageRu');
+let languageEn = document.querySelector('.languageEn');
 let langIndex;
 
 let lang = confirm('Ваш язык общения русский?');
@@ -78,11 +79,11 @@ let roleOfPerson = namePerson === 'Артём' ? console.log('Директор')
 //Понимаю что не по теме и не к уроку, но буду принателен если дашь обратную связь, как можно это упростить
 
 if (lang === 'Ru') {
-    language.classList.add('langRu');      
+    languageRu.classList.add('langRu');      
 } else if (lang === 'En') {
-    language.classList.add('langEn');
+    languageEn.classList.add('langEn');
 }
-console.log('language: ', language);
+console.log(language.lenght);
 
 //доделаю позже. выводится только понедельник. надо понять как перебрать все элементы в вёрстке
 // да и функция не правильно отображается. 
