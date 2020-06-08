@@ -1,7 +1,7 @@
 'use strict';
 
-let languageRu = document.querySelector('.languageRu');
-let languageEn = document.querySelector('.languageEn');
+let languageRu = document.querySelectorAll('.languageRu');
+let languageEn = document.querySelectorAll('.languageEn');
 let langIndex;
 
 let lang = confirm('Ваш язык общения русский?');
@@ -76,14 +76,26 @@ let roleOfPerson = namePerson === 'Артём' ? console.log('Директор')
     namePerson === 'Максим' ? console.log('Преподаватель') : console.log('Студент');
 
 //ниже код для верстки. Это мне нужно, решил сразу проверить. 
-//Понимаю что не по теме и не к уроку, но буду принателен если дашь обратную связь, как можно это упростить
+//Понимаю что не по теме и не к уроку, но буду принателен если дашь обратную связь, как можно это упростить. 
 
 if (lang === 'Ru') {
-    languageRu.classList.add('langRu');      
+    languageRu[0].classList.add('langRu');
+    languageRu[1].classList.add('langRu');
+    languageRu[2].classList.add('langRu');
+    languageRu[3].classList.add('langRu');
+    languageRu[4].classList.add('langRu');
+    languageRu[5].classList.add('langRu');
+    languageRu[6].classList.add('langRu');   
 } else if (lang === 'En') {
-    languageEn.classList.add('langEn');
+    languageEn[0].classList.add('langEn');
+    languageEn[1].classList.add('langEn');
+    languageEn[2].classList.add('langEn');
+    languageEn[3].classList.add('langEn');
+    languageEn[4].classList.add('langEn');
+    languageEn[5].classList.add('langEn');
+    languageEn[6].classList.add('langEn'); 
 }
-console.log(language.lenght);
+console.log(languageRu.lenght);//в консоли undefined, то есть длинну не понять. 
 
-//доделаю позже. выводится только понедельник. надо понять как перебрать все элементы в вёрстке
-// да и функция не правильно отображается. 
+//доделаю позже. пока додумался так. . надо понять как перебрать все элементы в вёрстке
+
