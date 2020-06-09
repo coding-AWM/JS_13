@@ -1,16 +1,17 @@
-// let message = prompt('Напишите произвольное предложение');
-// let length = prompt('Напишите цифрами длинну сообщения, которую надо оставить');
+let message = prompt('Напишите произвольное предложение');
+let length = prompt('Напишите цифрами длинну сообщения, которую надо оставить');
 
-message = 'fhsfhkjlkskuyghvbnkmfdsghfbslf';
-length = 5;
+// message = 5555;
+// length = 5;
 
 function cutOff (mess, leng) {
 
-    if (message !== '0') {
+    if (typeof message != typeof ' ') {
+        console.log('FALSE');
+        alert('Введите число');
+    }  else {
         console.log('TRUE');
         return mess.slice(0, leng);
-    }  else {
-        console.log('FALSE');
     }
     // else {
     //     alert('Введите текствотове сообщение');
