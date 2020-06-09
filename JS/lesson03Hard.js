@@ -79,23 +79,28 @@ let roleOfPerson = namePerson === 'Артём' ? console.log('Директор')
 //Понимаю что не по теме и не к уроку, но буду принателен если дашь обратную связь, как можно это упростить. 
 
 if (lang === 'Ru') {
-    languageRu[0].classList.add('langRu');
-    languageRu[1].classList.add('langRu');
-    languageRu[2].classList.add('langRu');
-    languageRu[3].classList.add('langRu');
-    languageRu[4].classList.add('langRu');
-    languageRu[5].classList.add('langRu');
-    languageRu[6].classList.add('langRu');   
+    for (let i = 0; i < languageRu.length; i++) {
+        languageRu[i].classList.add('langRu');
+    }
+    // languageRu[0].classList.add('langRu');
+    // languageRu[1].classList.add('langRu');
+    // languageRu[2].classList.add('langRu');
+    // languageRu[3].classList.add('langRu');
+    // languageRu[4].classList.add('langRu');
+    // languageRu[5].classList.add('langRu');
+    // languageRu[6].classList.add('langRu');   
 } else if (lang === 'En') {
-    languageEn[0].classList.add('langEn');
-    languageEn[1].classList.add('langEn');
-    languageEn[2].classList.add('langEn');
-    languageEn[3].classList.add('langEn');
-    languageEn[4].classList.add('langEn');
-    languageEn[5].classList.add('langEn');
-    languageEn[6].classList.add('langEn'); 
+    for (let i = 0; i < languageRu.length; i++) {
+        languageEn[i].classList.add('langEn');
+    }
+    // languageEn[0].classList.add('langEn');
+    // languageEn[1].classList.add('langEn');
+    // languageEn[2].classList.add('langEn');
+    // languageEn[3].classList.add('langEn');
+    // languageEn[4].classList.add('langEn');
+    // languageEn[5].classList.add('langEn');
+    // languageEn[6].classList.add('langEn'); 
 }
-console.log(languageRu.lenght);//в консоли undefined, то есть длинну не понять. 
+console.log(languageRu.length);
 
-//доделаю позже. пока додумался так. . надо понять как перебрать все элементы в вёрстке
-
+//доделаю позже. пока додумался так.
