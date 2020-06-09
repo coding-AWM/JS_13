@@ -28,7 +28,7 @@ function getAccumulatedMonth() {
 function getTargetMonth() {
     return Math.ceil(mission / getAccumulatedMonth());
 }
-let budgetDay = Math.floor(getAccumulatedMonth() / 30);
+let budgetDay = Math.floor(accumulatedMonth / 30);
 
 function showDetailes () {
     console.log('Расходы за месяц составили: ' + getExpensesMonth() + ' долларов');
