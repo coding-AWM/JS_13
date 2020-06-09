@@ -1,0 +1,15 @@
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.languageRu, .languageEn {
+    display: none;
+    margin-bottom: 20px;
+    color: Green;
+
+}
+
+.langRu, .langEn {
+    display: block;
+}
