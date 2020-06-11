@@ -47,9 +47,17 @@ function summ(a, b) {
 
 let getExpensesMonth = function () {
     let sum = 0;
+    let exp;
     for (let i = 0; i < 2; i++) {
         expenses[i] = prompt('Введите обязательную статью расходов?');
-        sum += +prompt('Во сколько это обойдётся?');
+        
+        while (!isNumber(exp)) {
+            exp = prompt('Во сколько это обойдётся?');
+        }
+
+        sum += +exp;
+        exp = NaN;
+        // exp = +prompt('Во сколько это обойдётся?');
     }
     console.log('Список ужемесячных трат: ', expenses);
     return sum;
@@ -71,7 +79,9 @@ function getTargetMonth() {
         return Math.ceil(mission / accumulatedMonth);
     } else {
         console.log('С отрицательным расходом цель достигнута не будет: ');
+        return Math.ceil(mission / accumulatedMonth);
     }
+
 }
 let budgetDay = Math.floor(accumulatedMonth / 30);
 
