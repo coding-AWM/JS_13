@@ -31,15 +31,11 @@ for (let i = 0; i < arr.length; i++) {
 // if ( 4 % 3 === 0 && 4 / 4 === 1) {
 //     console.log(5);
 // }
-
-for (let i = 1; i <= 100; i++) {
-    for (let j = 2; j <= i; j++) {
-        if ((i % j == 0) && (j != i)) {
-            break
-        } else {
-
-            console.log(i);
-            break
-        }
+let z = 100;
+simpleNumber:
+for (let i = 1; i <= z; i++) {
+    for (let j = 2; j < i; j++) {
+        if (i % j == 0) continue simpleNumber;
     }
+    console.log(i);
 }
