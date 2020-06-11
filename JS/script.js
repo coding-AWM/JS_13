@@ -39,7 +39,7 @@ start();
 
 let arrAddExpenses = addExpenses.toLowerCase().split(', ');
 let summaryIncome = summ(+money, +income);
-let expenses = [];
+let expenses = [];//это и есть переменная которую ты назвал amount, глобальная
 
 function summ(a, b) {
     return a + b;
@@ -47,19 +47,20 @@ function summ(a, b) {
 
 let getExpensesMonth = function () {
     let sum = 0;
-    let exp;
     for (let i = 0; i < 2; i++) {
+        let exp; //  это та самая техпеременая которая живёт внутри функции. и сравниватеся с !isNumber
         expenses[i] = prompt('Введите обязательную статью расходов?');
         
-        while (!isNumber(exp)) {
+        do {
             exp = prompt('Во сколько это обойдётся?');
-        }
 
+        }
+        while (!isNumber(exp))
+        //был WHILE стал DO WHILE . 
         sum += +exp;
-        exp = NaN;
-        // exp = +prompt('Во сколько это обойдётся?');
+        
     }
-    console.log('Список ужемесячных трат: ', expenses);
+    console.log('Список ежемесячных трат: ', expenses);
     return sum;
 }
 
