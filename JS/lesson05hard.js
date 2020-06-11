@@ -33,8 +33,8 @@ for (let i = 0; i < arr.length; i++) {
 // }
 
 for (let i = 1; i <= 100; i++) {
-    for (let j = 2; j < i; j++) {
-        if (i % j == 0) {
+    for (let j = 2; j <= i; j++) {
+        if ((i % j == 0) && (j != i)) {
             break
         } else {
 
