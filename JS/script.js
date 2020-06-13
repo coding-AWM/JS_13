@@ -91,7 +91,6 @@ function summ(a, b) {
 
 
 let expensesAmount = appData.getExpensesMonth();
-console.log('Расходы за месяц: ', expensesAmount);
 
 appData.budgetDay = Math.floor(appData.getAccumulatedMonth() / 30);
 
