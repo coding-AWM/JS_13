@@ -16,8 +16,8 @@ let money, income,
         }
         while (!isNumber(income))
     };
-start();
-let appData = {
+    start();
+    let appData = {
     budget: money,
     income: income, //доп доходы
     addIncome: [], //доп оходы текст
@@ -30,6 +30,7 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function () {
+
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'one, two, three');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -43,6 +44,17 @@ let appData = {
             while (!isNumber(exp))
             amount = +exp;
             appData.expenses[foo] = amount;
+        }
+        appData.getExpensesMonth();
+        appData.budgetDay = Math.floor(appData.getBudget() / 30);
+        showDetailes();
+        appData.getStatusIncome();
+        function showDetailes() {
+            console.log('Расходы за месяц составили: ' + appData.expensesMonth + ' $');
+            console.log('Бюджет на месяц: ' + appData.getBudget() + ' $');
+            console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' $');
+            console.log(appData.getTargetMonth() + ' ' + 'месяца');
+            console.log('Бюджет на день ' + appData.budgetDay + ' $');
         }
     },
 
@@ -86,17 +98,3 @@ let appData = {
     }
 }
 appData.asking();
-let expensesAmount = appData.getExpensesMonth();
-appData.budgetDay = Math.floor(appData.getBudget() / 30);
-
-function showDetailes() {
-    console.log('Расходы за месяц составили: ' + appData.expensesMonth + ' $');
-    console.log('Бюджет на месяц: ' + appData.getBudget() + ' $');
-    console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' $');
-    console.log(appData.getTargetMonth() + ' ' + 'месяца');
-    console.log('Бюджет на день ' + appData.budgetDay + ' $');
-}
-
-showDetailes();
-appData.getStatusIncome();
-console.log('appData   ',  appData);
