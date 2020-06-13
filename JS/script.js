@@ -33,22 +33,34 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'one, two, three');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
-    },
-    
-    getExpensesMonth: function () {
-        let sum = 0;
         for (let i = 0; i < 2; i++) {
-            let exp;
-            let foo = prompt('Введите обязательную статью расходов?', 'f-21');
-            
+            let exp, amount,
+                foo = prompt('Введите обязательную статью расходов?', 'f-21');
+
             do {
                 exp = prompt('Во сколько это обойдётся?', 21);
             }
             while (!isNumber(exp))
             amount = +exp;
             appData.expenses[foo] = amount;
-            sum += +amount;
         }
+    },
+    
+    getExpensesMonth: function () {
+        let sum = 0;
+        sum += +amount;
+        // for (let i = 0; i < 2; i++) {
+        //     let exp;
+        //     let foo = prompt('Введите обязательную статью расходов?', 'f-21');
+
+        //     do {
+        //         exp = prompt('Во сколько это обойдётся?', 21);
+        //     }
+        //     while (!isNumber(exp))
+        //     amount = +exp;
+        //     appData.expenses[foo] = amount;
+        //     sum += +amount;
+        // }
         // console.log('Список ежемесячных трат: ', expenses);
         return sum;
     },
