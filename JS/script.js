@@ -51,7 +51,7 @@ let appData = {
             let sum0 = +appData.expenses[key]
             appData.expensesMonth += sum0;
         }
-        
+
 
 
         // let sum = 0;
@@ -86,33 +86,17 @@ let appData = {
     }
 }
 appData.asking();
-
-console.log('appData.expenses: ', appData.expenses);
-
-
-
-// let summaryIncome = summ(+appData.budget, +income);
-// let expenses = [];
-// let amount = 0;
-
-// function summ(a, b) {
-//     return a + b;
-// }
-
-
 let expensesAmount = appData.getExpensesMonth();
-
 appData.budgetDay = Math.floor(appData.getBudget() / 30);
 
 function showDetailes() {
-    console.log('Расходы за месяц составили: ' + expensesAmount + ' долларов');
-    console.log('Бюджет на месяц: ' + appData.getBudget() + ' долларов!');
-    console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' долларов');
+    console.log('Расходы за месяц составили: ' + appData.expensesMonth + ' $');
+    console.log('Бюджет на месяц: ' + appData.getBudget() + ' $');
+    console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' $');
     console.log(appData.getTargetMonth() + ' ' + 'месяца');
-    console.log('Бюджет на день ' + appData.budgetDay + ' долларов');
-    // console.log(arrAddExpenses);
+    console.log('Бюджет на день ' + appData.budgetDay + ' $');
 }
 
 showDetailes();
 appData.getStatusIncome();
-console.log(appData);
+console.log('appData   ',  appData);
