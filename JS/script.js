@@ -7,19 +7,19 @@ let isNumber = function (z) {
 let money, income,
     start = function () {
         do {
-            money = prompt('Ваш месячный доход?', 500);
+            money = +prompt('Ваш месячный доход?', 500);
         }
         while (!isNumber(money))
 
         do {
-            income = prompt('Свободный заработок', 200);
+            income = +prompt('Свободный заработок', 200);
         }
         while (!isNumber(income))
     };
 start();
 let appData = {
     budget: money,
-    income: {}, //доп доходы
+    income: income, //доп доходы
     addIncome: [], //доп оходы текст
     expenses: {}, // доп расходы
     addExpenses: [], //возм доп расходы 
@@ -58,13 +58,13 @@ let appData = {
         // sum += +amount;        
         // return sum;
     },
-    getAccumulatedMonth: function () {
-        return summaryIncome - expensesAmount;
+    getBudget: function () {
+        return appData.budgetMonth = appData.budget + appData.income - appData.expensesMonth;
     },
     getTargetMonth: function () {
-        if (Math.ceil(appData.mission / appData.getAccumulatedMonth()) > 0) {
+        if (Math.ceil(appData.mission / appData.getBudget()) > 0) {
             console.log('Цель будет достигнута за: ');
-            return Math.ceil(appData.mission / appData.getAccumulatedMonth());
+            return Math.ceil(appData.mission / appData.getBudget());
         } else {
             console.log('С отрицательным расходом цель достигнута не будет: ');
             return Math.ceil(appData.mission / appData.getAccumulatedMonth());
@@ -91,22 +91,22 @@ console.log('appData.expenses: ', appData.expenses);
 
 
 
-let summaryIncome = summ(+appData.budget, +income);
-let expenses = [];
-let amount = 0;
+// let summaryIncome = summ(+appData.budget, +income);
+// let expenses = [];
+// let amount = 0;
 
-function summ(a, b) {
-    return a + b;
-}
+// function summ(a, b) {
+//     return a + b;
+// }
 
 
 let expensesAmount = appData.getExpensesMonth();
 
-appData.budgetDay = Math.floor(appData.getAccumulatedMonth() / 30);
+appData.budgetDay = Math.floor(appData.getBudget() / 30);
 
 function showDetailes() {
     console.log('Расходы за месяц составили: ' + expensesAmount + ' долларов');
-    console.log('Бюджет на месяц: ' + appData.getAccumulatedMonth() + ' долларов!');
+    console.log('Бюджет на месяц: ' + appData.getBudget() + ' долларов!');
     console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' долларов');
     console.log(appData.getTargetMonth() + ' ' + 'месяца');
     console.log('Бюджет на день ' + appData.budgetDay + ' долларов');
