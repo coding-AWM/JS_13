@@ -16,8 +16,8 @@ let money, income,
         }
         while (!isNumber(income))
     };
-    start();
-    let appData = {
+start();
+let appData = {
     budget: money,
     income: income, //доп доходы
     addIncome: [], //доп оходы текст
@@ -49,12 +49,13 @@ let money, income,
         appData.budgetDay = Math.floor(appData.getBudget() / 30);
         showDetailes();
         appData.getStatusIncome();
+
         function showDetailes() {
             console.log('Расходы за месяц составили: ' + appData.expensesMonth + ' $');
             console.log('Бюджет на месяц: ' + appData.getBudget() + ' $');
             console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' $');
             console.log(appData.getTargetMonth() + ' ' + 'месяца');
-            console.log('Бюджет на день ' + appData.budgetDay + ' $');
+            console.log('Бюджет на день: ' + appData.budgetDay + ' $');
         }
     },
 
@@ -98,3 +99,6 @@ let money, income,
     }
 }
 appData.asking();
+for (let key in appData) {
+    console.log('Моя программа включает в ключ - "' + key + '" И  его значение - "' + appData[key] + '"');
+}
