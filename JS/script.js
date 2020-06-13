@@ -45,24 +45,18 @@ let appData = {
             appData.expenses[foo] = amount;
         }
     },
-    
-    getExpensesMonth: function () {
-        let sum = 0;
-        sum += +amount;
-        // for (let i = 0; i < 2; i++) {
-        //     let exp;
-        //     let foo = prompt('Введите обязательную статью расходов?', 'f-21');
 
-        //     do {
-        //         exp = prompt('Во сколько это обойдётся?', 21);
-        //     }
-        //     while (!isNumber(exp))
-        //     amount = +exp;
-        //     appData.expenses[foo] = amount;
-        //     sum += +amount;
-        // }
-        // console.log('Список ежемесячных трат: ', expenses);
-        return sum;
+    getExpensesMonth: function () {
+        for (let key in appData.expenses) {
+            let sum0 = +appData.expenses[key]
+            appData.expensesMonth += sum0;
+        }
+        
+
+
+        // let sum = 0;
+        // sum += +amount;        
+        // return sum;
     },
     getAccumulatedMonth: function () {
         return summaryIncome - expensesAmount;
