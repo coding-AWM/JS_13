@@ -34,20 +34,22 @@ let appData = {
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
     },
+    
     getExpensesMonth: function () {
         let sum = 0;
         for (let i = 0; i < 2; i++) {
             let exp;
-            expenses[i] = prompt('Введите обязательную статью расходов?', 'f-21');
-
+            let foo = prompt('Введите обязательную статью расходов?', 'f-21');
+            
             do {
                 exp = prompt('Во сколько это обойдётся?', 21);
             }
             while (!isNumber(exp))
-            amount = exp;
+            amount = +exp;
+            appData.expenses[foo] = amount;
             sum += +amount;
         }
-        console.log('Список ежемесячных трат: ', expenses);
+        // console.log('Список ежемесячных трат: ', expenses);
         return sum;
     },
     getAccumulatedMonth: function () {
@@ -79,6 +81,8 @@ let appData = {
 }
 appData.asking();
 
+console.log('appData.expenses: ', appData.expenses);
+
 
 
 let summaryIncome = summ(+appData.budget, +income);
@@ -105,3 +109,4 @@ function showDetailes() {
 
 showDetailes();
 appData.getStatusIncome();
+console.log(appData);
