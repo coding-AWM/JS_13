@@ -26,6 +26,9 @@ let appData = {
     deposit: false,
     mission: 2000,
     period: 6,
+    budgetDay: 0,
+    budgetMonth: 0,
+    expensesMonth: 0,
     asking: function () {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'one, two, three');
         appData.addExpenses = addExpenses.toLowerCase().split(', ');
