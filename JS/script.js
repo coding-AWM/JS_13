@@ -4,40 +4,37 @@ let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
 
-let money,
-    income,
-    addExpenses,
-    deposit,
-    mission = 2000,
-    period = 6;
+let money, income,
+    start = function () {
+        do {
+            money = prompt('Ваш месячный доход?', 500);
+        }
+        while (!isNumber(money))
 
-let start = function () {
-    // while (isNaN(money) || money.trim() === '' || money === null) {
-    //     money = prompt('Ваш месячный доход?');
-    // }
-    //Код выше для проверки на вводимые данные. всё что не число FALSE
-
-    // while (isNaN(parseFloat(money))) {
-    //     money = +prompt('Ваш месячный доход?');
-    // }
-    //код выше проверяет ЭтоЧисло, а перед этим приводит к дробному числу если это число то код продолжается.
-    //Если же не число (а всё что не число не получится запарсить в число). то код повторяется
-
-    while (!isNumber(money)) {
-        money = prompt('Ваш месячный доход?');
-    }
-
-    while (!isNumber(income)) {
-        income = prompt('Свободный заработок');
-    }
-    //два кода выше тоже самое. но создана универсальная функция для проверки на число
-
-    addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-    deposit = confirm('Есть ли у вас депозит в банке?');
-};
+        do {
+            income = prompt('Свободный заработок', 200);
+        }
+        while (!isNumber(income))
+    };
 start();
+let appData = {
+    income: {}, //доп доходы
+    addIncome: [], //доп оходы текст
+    expenses: {}, // доп расходы
+    addExpenses: [], //возм доп расходы 
+    deposit: false,
+    mission: 2000,
+    period: 6,
+    asking: function () {
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'one, two, three');
+        appData.addExpenses = addExpenses.toLowerCase().split(', ');
+        appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    }
+}
+appData.asking();
 
-let arrAddExpenses = addExpenses.toLowerCase().split(', ');
+
+
 let summaryIncome = summ(+money, +income);
 let expenses = [];
 let amount = 0;
@@ -49,24 +46,15 @@ function summ(a, b) {
 let getExpensesMonth = function () {
     let sum = 0;
     for (let i = 0; i < 2; i++) {
-        let exp; //  это та самая техпеременая которая живёт внутри функции. и сравниватеся с !isNumber
-        expenses[i] = prompt('Введите обязательную статью расходов?');
-        
-        // do {
-        //     exp = prompt('Во сколько это обойдётся?');
-        //     console.log('exp: ', exp);          
+        let exp;
+        expenses[i] = prompt('Введите обязательную статью расходов?', 'f-21');
 
-        // }
         do {
-            exp = prompt('Во сколько это обойдётся?');
-            // console.log('exp: ', exp); 
+            exp = prompt('Во сколько это обойдётся?', 21);
         }
         while (!isNumber(exp))
         amount = exp;
-        // console.log('amount: ', amount);
-        //был WHILE стал DO WHILE . 
         sum += +amount;
-        
     }
     console.log('Список ежемесячных трат: ', expenses);
     return sum;
@@ -83,12 +71,12 @@ let accumulatedMonth = getAccumulatedMonth();
 console.log('Чистый доход в месяц: ', accumulatedMonth);
 
 function getTargetMonth() {
-    if (Math.ceil(mission / accumulatedMonth) > 0) {
+    if (Math.ceil(appData.mission / accumulatedMonth) > 0) {
         console.log('Цель будет достигнута за: ');
-        return Math.ceil(mission / accumulatedMonth);
+        return Math.ceil(appData.mission / accumulatedMonth);
     } else {
         console.log('С отрицательным расходом цель достигнута не будет: ');
-        return Math.ceil(mission / accumulatedMonth);
+        return Math.ceil(appData.mission / accumulatedMonth);
     }
 
 }
@@ -97,16 +85,16 @@ let budgetDay = Math.floor(accumulatedMonth / 30);
 function showDetailes() {
     console.log('Расходы за месяц составили: ' + expensesAmount + ' долларов');
     console.log('Бюджет на месяц: ' + getAccumulatedMonth() + ' долларов!');
-    console.log('Цель заработать' + ' ' + mission + ' ' + ' долларов');
-    console.log( getTargetMonth() + ' ' + 'месяца');
+    console.log('Цель заработать' + ' ' + appData.mission + ' ' + ' долларов');
+    console.log(getTargetMonth() + ' ' + 'месяца');
     console.log('Бюджет на день ' + budgetDay + ' долларов');
-    console.log(arrAddExpenses);
+    // console.log(arrAddExpenses);
 }
 
 function showTypeOf() {
     console.log(typeof money);
-    console.log(typeof income);
-    console.log(typeof deposit);
+    console.log(typeof appData.income);
+    console.log(typeof appData.deposit);
 }
 
 function getStatusIncome() {
