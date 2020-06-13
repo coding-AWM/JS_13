@@ -7,12 +7,12 @@ let isNumber = function (z) {
 let money, income,
     start = function () {
         do {
-            money = +prompt('Ваш месячный доход?', 500);
+            money = prompt('Ваш месячный доход?', 500);
         }
         while (!isNumber(money))
 
         do {
-            income = +prompt('Свободный заработок', 200);
+            income = prompt('Свободный заработок', 200);
         }
         while (!isNumber(income))
     };
