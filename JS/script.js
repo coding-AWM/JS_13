@@ -7,7 +7,7 @@ let isNumber = function (z) {
 let money, income,
     start = function () {
         do {
-            money = prompt('Ваш месячный доход?', 500);
+            money = prompt('Ваш месячный доход?', 500);            
         }
         while (!isNumber(money))
 
@@ -18,6 +18,7 @@ let money, income,
     };
 start();
 let appData = {
+    budget: money,
     income: {}, //доп доходы
     addIncome: [], //доп оходы текст
     expenses: {}, // доп расходы
