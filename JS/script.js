@@ -91,12 +91,6 @@ function showDetailes() {
     // console.log(arrAddExpenses);
 }
 
-function showTypeOf() {
-    console.log(typeof money);
-    console.log(typeof appData.income);
-    console.log(typeof appData.deposit);
-}
-
 function getStatusIncome() {
     if (budgetDay >= 30) {
         console.log('У вас высокий уровень дохода');
@@ -114,4 +108,3 @@ function getStatusIncome() {
 
 showDetailes();
 getStatusIncome();
-showTypeOf();
