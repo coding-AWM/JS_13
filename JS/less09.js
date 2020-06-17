@@ -16,4 +16,3 @@ let salaryAmount = document.querySelector('.salary-amount');
 let incomeTitle = document.querySelector('.income-title');
 let incomeAmount = document.querySelector('.income-amount');
 let periodSelect = document.querySelector('.period-select');
-console.log('periodSelect: ', periodSelect);
