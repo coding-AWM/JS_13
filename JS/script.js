@@ -84,6 +84,7 @@ let appData = {
         for (let i = 0; i < input.length; i++) {
             input[i].readOnly = true;
         }
+        
 
         // for (let i = 1; i < incomeTitle.length; i++) {
         //     incomeTitle[i].disabled = true;
