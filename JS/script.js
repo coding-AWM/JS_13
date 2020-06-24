@@ -19,7 +19,10 @@ let expensesItems = document.querySelectorAll('.expenses-items');
 // let expensesAmount = document.querySelector('.expenses-amount');
 
 let salaryAmount = document.querySelector('.salary-amount');
-let incomeTitle = document.querySelector('.income-title');
+let incomeTitle = document.querySelectorAll('.income-title');
+let incomeAmount = document.querySelectorAll('.income-amount');
+let expensesTitle = document.querySelectorAll('.expenses-title');
+let expensesAmount = document.querySelectorAll('.expenses-amount');
 // let incomeAmount = document.querySelector('.income-amount');
 
 let periodSelect = document.querySelector('.period-select');
@@ -77,22 +80,51 @@ let appData = {
     },
 
     blockInput: function () {
-        for (let i = 0; i < 12; i++) {
-            input[i].disabled = true;
+
+        for (let i = 0; i < input.length; i++) {
+            input[i].readOnly = true;
         }
+
+        // for (let i = 1; i < incomeTitle.length; i++) {
+        //     incomeTitle[i].disabled = true;
+        //     // incomeAmount[i].disabled = true;
+        // }
+        // for (let i = 1; i < expensesTitle.length; i++) {
+        //     expensesTitle[i].disabled = true;
+        //     // expensesAmount[i].disabled = true;
+        // }
+
         buttonCalculate.style.display = "none";
         buttonCancel.style.display = "inline-block";
+        periodSelect.disabled = true;
+        addIncomeButton.disabled = true;
+        addExpensesButton.disabled = true;
+        depositCheck.disabled = true;
 
     },
     blockReset: function () {
-        console.log('Нажата');
-        for (let i = 0; i < 12; i++) {
-            input[i].disabled = false;
+
+        for (let i = 0; i < input.length; i++) {
+            input[i].readOnly = false;
             input[i].value = "";
-            buttonCancel.style.display = "none";
-            buttonCalculate.style.display = "inline-block";
         }
-        // buttonCancel.reset()
+        for (let i = 1; i < expensesItems.length; i++) {
+            expensesItems[i].remove();
+        }
+        for (let i = 1; i < incomeItems.length; i++) {
+            incomeItems[i].remove();
+        }
+
+        buttonCancel.style.display = "none";
+        buttonCalculate.style.display = "inline-block";
+        periodSelect.disabled = false;
+        addIncomeButton.disabled = false;
+        addExpensesButton.disabled = false;
+        depositCheck.disabled = false;
+        addExpensesButton.style.display = 'block';
+        addIncomeButton.style.display = 'block';
+        periodSelect.value = "1";
+        periodAmount.textContent = 1;
     },
     showResult: function () { //                   -----ВЫВОД результатов в вёрстку
         budgetMonthValue.value = this.budgetMonth;
