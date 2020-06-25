@@ -39,10 +39,10 @@ let eventFunc = function (event) {
 let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
-let appD = {};
+const appD = {};
 
 // appData.start();
-let appData = {
+const appData = {
     budget: 0,
     income: {}, //доп доходы
     addIncome: [], //доп оходы текст
@@ -94,6 +94,7 @@ let appData = {
 
     },
     blockReset: function () {
+        location.reload()
         // console.log(appD);
         // console.log(appData);
 
