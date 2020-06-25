@@ -39,6 +39,7 @@ let eventFunc = function (event) {
 let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
+let appD = {};
 
 // appData.start();
 let appData = {
@@ -63,8 +64,7 @@ let appData = {
         }
         appData.budget = +salaryAmount.value;
 
-        appData.getInfoDeposit();
-        appData.getExpenses();
+        // appData.getInfoDeposit();appData.getExpenses();
         appData.getExpensesMonth();
         // appData.getIncomeMonth();
         appData.getincome();
@@ -80,20 +80,10 @@ let appData = {
     },
 
     blockInput: function () {
-
+        input = document.querySelectorAll('input');
         for (let i = 0; i < input.length; i++) {
             input[i].readOnly = true;
         }
-        
-
-        // for (let i = 1; i < incomeTitle.length; i++) {
-        //     incomeTitle[i].disabled = true;
-        //     // incomeAmount[i].disabled = true;
-        // }
-        // for (let i = 1; i < expensesTitle.length; i++) {
-        //     expensesTitle[i].disabled = true;
-        //     // expensesAmount[i].disabled = true;
-        // }
 
         buttonCalculate.style.display = "none";
         buttonCancel.style.display = "inline-block";
@@ -104,7 +94,31 @@ let appData = {
 
     },
     blockReset: function () {
+        // console.log(appD);
+        // console.log(appData);
 
+        // for (let key in appD) {
+        //     let temp = appD[key];
+        //     appData[key] = temp;
+        // }
+        // for (let key in appD) {
+        //     if (typeof appD[key] === 'object') {
+        //         appData[key] = Object.assign({}, appD[key]);
+        //     } else {
+        //         appData[key] = appD[key]
+        //     }
+        // }
+        for (let key in appD) {
+            if (typeof appD[key] === 'object') {
+                appData[key] = Object.assign({}, appD[key]);
+            } else {
+                let temp = appD[key];
+                appData[key] = temp;
+            }
+        }
+        // for (let key in appD) {
+        //     appData[key] = Object.assign({}, appD[key]);
+        // }
         for (let i = 0; i < input.length; i++) {
             input[i].readOnly = false;
             input[i].value = "";
@@ -126,6 +140,8 @@ let appData = {
         addIncomeButton.style.display = 'block';
         periodSelect.value = "1";
         periodAmount.textContent = 1;
+        // console.log(appD);
+        // console.log(appData);
     },
     showResult: function () { //                   -----ВЫВОД результатов в вёрстку
         budgetMonthValue.value = this.budgetMonth;
@@ -256,8 +272,19 @@ let appData = {
     calcSavedMoney: function () {
         return this.budgetMonth * periodSelect.value;
     }
-
 }
+
+
+for (let key in appData) {
+    if (typeof appData[key] === 'object') {
+        appD[key] = Object.assign({}, appData[key]);
+    } else {
+        let temp = appData[key];
+        appD[key] = temp;
+    }
+}
+
+// appD = Object.assign({}, appData);
 buttonCancel.addEventListener('click', appData.blockReset);
 buttonCalculate.addEventListener('click', appData.start);
 addExpensesButton.addEventListener('click', appData.addExpensesBlock);
