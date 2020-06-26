@@ -85,7 +85,7 @@ let appData = {
 
         buttonCalculate.style.display = "none";
         buttonCancel.style.display = "inline-block";
-        periodSelect.disabled = true;
+
         addIncomeButton.disabled = true;
         addExpensesButton.disabled = true;
         depositCheck.disabled = true;
@@ -137,7 +137,7 @@ let appData = {
 
                 buttonCalculate.style.display = "none";
                 buttonCancel.style.display = "inline-block";
-                periodSelect.disabled = true;
+
                 addIncomeButton.disabled = true;
                 addExpensesButton.disabled = true;
                 depositCheck.disabled = true;
@@ -167,7 +167,7 @@ let appData = {
 
                 buttonCancel.style.display = "none";
                 buttonCalculate.style.display = "inline-block";
-                periodSelect.disabled = false;
+
                 addIncomeButton.disabled = false;
                 addExpensesButton.disabled = false;
                 depositCheck.disabled = false;
@@ -175,6 +175,7 @@ let appData = {
                 addIncomeButton.style.display = 'block';
                 periodSelect.value = "1";
                 periodAmount.textContent = 1;
+
             },
             showResult: function () { //                   -----ВЫВОД результатов в вёрстку
                 budgetMonthValue.value = this.budgetMonth;
@@ -315,7 +316,7 @@ let appData = {
 
         buttonCancel.style.display = "none";
         buttonCalculate.style.display = "inline-block";
-        periodSelect.disabled = false;
+
         addIncomeButton.disabled = false;
         addExpensesButton.disabled = false;
         depositCheck.disabled = false;
