@@ -105,14 +105,15 @@ AppData.prototype.reset = function () {
         incomeItems[i].remove();
     }
 
-    for (let key in copy) {
-        if (typeof copy[key] === 'object') {
-            appData[key] = Object.assign({}, copy[key]);
-        } else {
-            let temp = copy[key];
-            appData[key] = temp;
-        }
-    }    
+    // for (let key in copy) {
+    //     if (typeof copy[key] === 'object') {
+    //         appData[key] = Object.assign({}, copy[key]);
+    //     } else {
+    //         let temp = copy[key];
+    //         appData[key] = temp;
+    //     }
+    // }  
+    appData = Object.assign({}, copy);  
 
     buttonCancel.style.display = "none";
     buttonCalculate.style.display = "inline-block";
@@ -126,11 +127,12 @@ AppData.prototype.reset = function () {
 };
 
 AppData.prototype.showResult = function () { //                   -----ВЫВОД результатов в вёрстку
+    const _this = this;
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = this.budgetDay;
     expensesMonthValue.value = this.expensesMonth;
-    additionalExpensesValue.value = this.addExpenses; //.join(', ');
-    additionalIncomeValue.value = this.addIncome; //.join(', ');
+    additionalExpensesValue.value = this.addExpenses.join(', ');
+    additionalIncomeValue.value = this.addIncome.join(', ');
     targetMonthValue.value = this.getTargetMonth();
     incomePeriodValue.value = this.calcSavedMoney();
 
@@ -180,9 +182,9 @@ AppData.prototype.getAddExpenses = function () {
     const _this = this;
     let addExpenses = additionalExpensesItem.value.split(', ');
     addExpenses.forEach(function (item) {
-        item = item.trim();
+        let itemValue = item.trim();
         if (item !== '') {
-            _this.addExpenses.push(item);
+            _this.addExpenses.push(itemValue);
         }
     })
 };
@@ -262,9 +264,6 @@ AppData.prototype.eventsListeners = function () {
     addIncomeButton.addEventListener('click', this.addAmountBlock.bind(appData));
     periodSelect.addEventListener('change', this.eventFunc.bind(appData));
 }
-const appData = new AppData();
-let copy = Object.assign({}, new AppData);
-
-
-
+let appData = new AppData();
+let copy = Object.assign({}, new AppData());
 appData.eventsListeners();
