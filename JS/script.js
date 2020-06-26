@@ -104,15 +104,7 @@ AppData.prototype.reset = function () {
     for (let i = 1; i < incomeItems.length; i++) {
         incomeItems[i].remove();
     }
-
-    // for (let key in copy) {
-    //     if (typeof copy[key] === 'object') {
-    //         appData[key] = Object.assign({}, copy[key]);
-    //     } else {
-    //         let temp = copy[key];
-    //         appData[key] = temp;
-    //     }
-    // }  
+     
     appData = Object.assign({}, copy);  
 
     buttonCancel.style.display = "none";
