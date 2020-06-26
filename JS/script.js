@@ -105,21 +105,6 @@ AppData.prototype.reset = function () {
         incomeItems[i].remove();
     }
 
-    // this.budget = 0;
-    // this.income = {};
-    // this.addIncome = [];
-    // this.incomeMonth = 0;
-    // this.expenses = {};
-    // this.addExpenses = [];
-    // this.deposit = false;
-    // this.percentDeposit = 0;
-    // this.moneyDeposit = 0;
-    // this.budgetDay = 0;
-    // this.budgetMonth = 0;
-    // this.expensesMonth = 0;
-
-    // appData = Object.assign({}, copy);
-
     for (let key in copy) {
         if (typeof copy[key] === 'object') {
             appData[key] = Object.assign({}, copy[key]);
@@ -127,14 +112,7 @@ AppData.prototype.reset = function () {
             let temp = copy[key];
             appData[key] = temp;
         }
-    }
-
-    // appData = Object.assign({}, copy);
-
-    // for (let key in copy) {
-    //     // let temp = copy[key];
-    //     appData[key] = copy[key];
-    // }
+    }    
 
     buttonCancel.style.display = "none";
     buttonCalculate.style.display = "inline-block";
