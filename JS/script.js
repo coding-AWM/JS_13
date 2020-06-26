@@ -104,8 +104,8 @@ AppData.prototype.reset = function () {
     for (let i = 1; i < incomeItems.length; i++) {
         incomeItems[i].remove();
     }
-     
-    appData = Object.assign({}, copy);  
+
+    appData = Object.assign({}, copy);
 
     buttonCancel.style.display = "none";
     buttonCalculate.style.display = "inline-block";
