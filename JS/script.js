@@ -103,12 +103,17 @@ AppData.prototype.reset = function () {
         incomeItems[i].remove();
     }
 
-
-    for (let key in this) {
-        if (typeof this[key] !== 'function') {
-            this[key] = copyCopy[key];
-        }
-    }
+    // let appData = new AppData();
+    // for(let key in appDataProp) {
+    //     if(typeof this[key] !== 'function') {
+    //         this[key] = appDataProp[key];
+    //     }
+    // }
+    // for (let key in this) {
+    //     if (typeof this[key] !== 'function') {
+    //         this[key] = copyCopy[key];
+    //     }
+    // }
     // for (let key in this) {
     //     if (typeof this[key] !== 'function'){
     //         this[key] = copyCopy[key];
@@ -128,6 +133,19 @@ AppData.prototype.reset = function () {
     // appData = new AppData();
 
     // appData = Object.assign({}, copy);
+
+    this.budget = 0;
+    this.income = {};
+    this.addIncome = [];
+    this.incomeMonth = 0;
+    this.expenses = {};
+    this.addExpenses = [];
+    this.deposit = false;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
 
     buttonCancel.style.display = "none";
     buttonCalculate.style.display = "inline-block";
@@ -233,14 +251,14 @@ AppData.prototype.getInfoDeposit = function () {
 AppData.prototype.getExpensesMonth = function () {
     for (let key in this.expenses) {
         let sum0 = +this.expenses[key]
-        this.expensesMonth += sum0;
+        this.expensesMonth += +sum0;
     }
 };
 
 AppData.prototype.getIncomeMonth = function () {
     for (let key in this.income) {
         let sum0 = +this.income[key]
-        this.incomeMonth += sum0;
+        this.incomeMonth += +sum0;
     }
 };
 
@@ -280,6 +298,8 @@ AppData.prototype.eventsListeners = function () {
     periodSelect.addEventListener('change', this.eventFunc.bind(appData));
 }
 let appData = new AppData();
-let copy = Object.assign({}, new AppData());
-let copyCopy = Object.assign({}, copy);
+// let copy = Object.assign({}, new AppData());
+// let copyCopy = Object.assign({}, copy);
+// const appDataClean = new AppData();
+// const appDataProp = Object.assign({}, appDataClean);
 appData.eventsListeners();
