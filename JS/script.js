@@ -67,8 +67,6 @@ AppData.prototype.start = function () {
     this.getAddIncome();
     this.getAddExpenses();
     this.getBudget();
-    this.budgetDay = Math.floor(this.getBudget() / 30);
-
     this.showResult();
     this.blockInput();
 };
@@ -105,7 +103,31 @@ AppData.prototype.reset = function () {
         incomeItems[i].remove();
     }
 
-    appData = Object.assign({}, copy);
+
+    for (let key in this) {
+        if (typeof this[key] !== 'function') {
+            this[key] = copyCopy[key];
+        }
+    }
+    // for (let key in this) {
+    //     if (typeof this[key] !== 'function'){
+    //         this[key] = copyCopy[key];
+    //     } else if (typeof this[key] !== 'object') {
+    //         this[key] = {};
+    //     } else if (typeof this[key] !== 'array') {
+    //         this[key] = [];
+    //     }
+    // }
+
+
+    //вот то что выше вообще не пашет. не понимает он что тако массив. и ВСЁ, даже методы делает объектом. 
+
+
+    // appData = Object.assign({}, copyCopy);
+
+    // appData = new AppData();
+
+    // appData = Object.assign({}, copy);
 
     buttonCancel.style.display = "none";
     buttonCalculate.style.display = "inline-block";
@@ -165,7 +187,7 @@ AppData.prototype.getincome = function () {
         let itemIncome = item.querySelector('.income-title').value;
         let cashIncome = +item.querySelector('.income-amount').value;
         if (itemIncome !== '' && cashIncome !== '') {
-            _this.addIncome[itemIncome] = +cashIncome;
+            _this.income[itemIncome] = +cashIncome;
         }
     })
 };
@@ -216,14 +238,15 @@ AppData.prototype.getExpensesMonth = function () {
 };
 
 AppData.prototype.getIncomeMonth = function () {
-    for (let key in this.addIncome) {
-        let sum0 = +this.addIncome[key]
+    for (let key in this.income) {
+        let sum0 = +this.income[key]
         this.incomeMonth += sum0;
     }
 };
 
 AppData.prototype.getBudget = function () {
-    return this.budgetMonth = +this.budget + +this.incomeMonth - +this.expensesMonth;
+    this.budgetMonth = +this.budget + +this.incomeMonth - +this.expensesMonth;
+    this.budgetDay = Math.floor(this.budgetMonth / 30);
 };
 
 AppData.prototype.getTargetMonth = function () {
@@ -258,4 +281,5 @@ AppData.prototype.eventsListeners = function () {
 }
 let appData = new AppData();
 let copy = Object.assign({}, new AppData());
+let copyCopy = Object.assign({}, copy);
 appData.eventsListeners();
