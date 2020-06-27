@@ -101,38 +101,7 @@ AppData.prototype.reset = function () {
     }
     for (let i = 1; i < incomeItems.length; i++) {
         incomeItems[i].remove();
-    }
-
-    // let appData = new AppData();
-    // for(let key in appDataProp) {
-    //     if(typeof this[key] !== 'function') {
-    //         this[key] = appDataProp[key];
-    //     }
-    // }
-    // for (let key in this) {
-    //     if (typeof this[key] !== 'function') {
-    //         this[key] = copyCopy[key];
-    //     }
-    // }
-    // for (let key in this) {
-    //     if (typeof this[key] !== 'function'){
-    //         this[key] = copyCopy[key];
-    //     } else if (typeof this[key] !== 'object') {
-    //         this[key] = {};
-    //     } else if (typeof this[key] !== 'array') {
-    //         this[key] = [];
-    //     }
-    // }
-
-
-    //вот то что выше вообще не пашет. не понимает он что тако массив. и ВСЁ, даже методы делает объектом. 
-
-
-    // appData = Object.assign({}, copyCopy);
-
-    // appData = new AppData();
-
-    // appData = Object.assign({}, copy);
+    }    
 
     this.budget = 0;
     this.income = {};
@@ -297,9 +266,6 @@ AppData.prototype.eventsListeners = function () {
     addIncomeButton.addEventListener('click', this.addAmountBlock.bind(appData));
     periodSelect.addEventListener('change', this.eventFunc.bind(appData));
 }
+
 let appData = new AppData();
-// let copy = Object.assign({}, new AppData());
-// let copyCopy = Object.assign({}, copy);
-// const appDataClean = new AppData();
-// const appDataProp = Object.assign({}, appDataClean);
 appData.eventsListeners();
