@@ -37,19 +37,21 @@ let isNumber = function (z) {
     return !isNaN(parseFloat(z)) && isFinite(z);
 }
 
-const AppData = function () {
-    this.budget = 0;
-    this.income = {};
-    this.addIncome = [];
-    this.incomeMonth = 0;
-    this.expenses = {};
-    this.addExpenses = [];
-    this.deposit = false;
-    this.percentDeposit = 0;
-    this.moneyDeposit = 0;
-    this.budgetDay = 0;
-    this.budgetMonth = 0;
-    this.expensesMonth = 0;
+class AppData {
+    constructor () {
+        this.budget = 0;
+        this.income = {};
+        this.addIncome = [];
+        this.incomeMonth = 0;
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = false;
+        this.percentDeposit = 0;
+        this.moneyDeposit = 0;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.expensesMonth = 0;
+    }
 };
 
 AppData.prototype.start = function () {
