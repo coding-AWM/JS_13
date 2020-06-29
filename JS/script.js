@@ -38,7 +38,7 @@ let isNumber = function (z) {
 }
 
 class AppData {
-    constructor () {
+    constructor() {
         this.budget = 0;
         this.income = {};
         this.addIncome = [];
@@ -52,26 +52,44 @@ class AppData {
         this.budgetMonth = 0;
         this.expensesMonth = 0;
     }
-};
-
-AppData.prototype.start = function () {
-    if (salaryAmount.value === '') {
-        alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
-        return;
+    start () {
+        if (salaryAmount.value === '') {
+            alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
+            return;
+        }
+        this.budget = +salaryAmount.value;
+    
+        // appData.getInfoDeposit();
+        this.getExpenses();
+        this.getExpensesMonth();
+        this.getincome();
+        this.getIncomeMonth();
+        this.getAddIncome();
+        this.getAddExpenses();
+        this.getBudget();
+        this.showResult();
+        this.blockInput();
     }
-    this.budget = +salaryAmount.value;
-
-    // appData.getInfoDeposit();
-    this.getExpenses();
-    this.getExpensesMonth();
-    this.getincome();
-    this.getIncomeMonth();
-    this.getAddIncome();
-    this.getAddExpenses();
-    this.getBudget();
-    this.showResult();
-    this.blockInput();
 };
+
+// AppData.prototype.start = function () {
+//     if (salaryAmount.value === '') {
+//         alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
+//         return;
+//     }
+//     this.budget = +salaryAmount.value;
+
+//     // appData.getInfoDeposit();
+//     this.getExpenses();
+//     this.getExpensesMonth();
+//     this.getincome();
+//     this.getIncomeMonth();
+//     this.getAddIncome();
+//     this.getAddExpenses();
+//     this.getBudget();
+//     this.showResult();
+//     this.blockInput();
+// };
 
 AppData.prototype.eventFunc = function (event) {
     periodAmount.innerHTML = periodSelect.value;
@@ -103,7 +121,7 @@ AppData.prototype.reset = function () {
     }
     for (let i = 1; i < incomeItems.length; i++) {
         incomeItems[i].remove();
-    }    
+    }
 
     this.budget = 0;
     this.income = {};
@@ -130,7 +148,6 @@ AppData.prototype.reset = function () {
 };
 
 AppData.prototype.showResult = function () { //                   -----ВЫВОД результатов в вёрстку
-    const _this = this;
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = this.budgetDay;
     expensesMonthValue.value = this.expensesMonth;
@@ -160,44 +177,40 @@ AppData.prototype.addAmountBlock = function () {
 };
 
 AppData.prototype.getExpenses = function () {
-    const _this = this;
-    expensesItems.forEach(function (item) {
+    expensesItems.forEach((item) => {
         let itemExpenses = item.querySelector('.expenses-title').value;
         let cashExpenses = +item.querySelector('.expenses-amount').value;
         if (itemExpenses !== '' && cashExpenses !== '') {
-            _this.expenses[itemExpenses] = +cashExpenses;
+            this.expenses[itemExpenses] = +cashExpenses;
         }
     })
 };
 
 AppData.prototype.getincome = function () {
-    const _this = this;
-    incomeItems.forEach(function (item) {
+    incomeItems.forEach((item) => {
         let itemIncome = item.querySelector('.income-title').value;
         let cashIncome = +item.querySelector('.income-amount').value;
         if (itemIncome !== '' && cashIncome !== '') {
-            _this.income[itemIncome] = +cashIncome;
+            this.income[itemIncome] = +cashIncome;
         }
     })
 };
 
 AppData.prototype.getAddExpenses = function () {
-    const _this = this;
     let addExpenses = additionalExpensesItem.value.split(', ');
-    addExpenses.forEach(function (item) {
+    addExpenses.forEach((item) => {
         let itemValue = item.trim();
         if (item !== '') {
-            _this.addExpenses.push(itemValue);
+            this.addExpenses.push(itemValue);
         }
     })
 };
 
 AppData.prototype.getAddIncome = function () {
-    const _this = this;
-    addIncomeItems.forEach(function (item) {
+    addIncomeItems.forEach((item) => {
         let itemValue = item.value.trim();
         if (itemValue !== '') {
-            _this.addIncome.push(itemValue);
+            this.addIncome.push(itemValue);
         }
     });
 };
