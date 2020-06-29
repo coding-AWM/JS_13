@@ -259,6 +259,7 @@ AppData.prototype.calcSavedMoney = function () {
 
     return this.budgetMonth * periodSelect.value;
 }
+
 AppData.prototype.eventsListeners = function () {
     buttonCancel.addEventListener('click', this.reset.bind(appData));
     buttonCalculate.addEventListener('click', this.start.bind(appData));
