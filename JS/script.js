@@ -243,11 +243,12 @@ class AppData {
     }
 
     eventsListeners() {
-        buttonCancel.addEventListener('click', this.reset.bind(appData));
-        buttonCalculate.addEventListener('click', this.start.bind(appData));
-        addExpensesButton.addEventListener('click', this.addExpensesBlock.bind(appData));
-        addIncomeButton.addEventListener('click', this.addAmountBlock.bind(appData));
-        periodSelect.addEventListener('change', this.eventFunc.bind(appData));
+        buttonCancel.addEventListener('click', this.reset.bind(this));
+        buttonCalculate.addEventListener('click', this.start.bind(this));
+        addExpensesButton.addEventListener('click', this.addExpensesBlock.bind(this));
+        addIncomeButton.addEventListener('click', this.addAmountBlock.bind(this));
+        periodSelect.addEventListener('change', this.eventFunc.bind(this));
+        console.log(this);
     }
 };
 
