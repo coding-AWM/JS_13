@@ -289,7 +289,7 @@ class AppData {
     }
 
     eventsListeners() {
-        depositPercent.addEventListener('change', this.percentSheck.bind(this));
+        depositPercent.addEventListener('input', this.percentSheck.bind(this));
         buttonCancel.addEventListener('click', this.reset.bind(this));
         buttonCalculate.addEventListener('click', this.start.bind(this));
         addExpensesButton.addEventListener('click', this.addExpensesBlock.bind(this));
