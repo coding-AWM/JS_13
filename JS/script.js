@@ -52,7 +52,6 @@ class AppData {
     }
 
     start() {
-        // this.percentSheck();
         if (salaryAmount.value === '') {
             alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
             return;
@@ -118,6 +117,7 @@ class AppData {
         addIncomeButton.style.display = 'block';
         periodSelect.value = "1";
         periodAmount.textContent = 1;
+        this.percentDeposit = 0;
     };
 
     showResult() { //                   -----ВЫВОД резульстку
@@ -191,10 +191,6 @@ class AppData {
     getInfoDeposit() {
 
         if (this.deposit) {
-            // do {
-            //     alert( 'введи т 0 до 20');
-            //     depositPercent.value = 7;
-            // } while (depositPercent.value > 20)
             this.percentDeposit = depositPercent.value;
             console.log('this.percentDeposit: ', this.percentDeposit);
             this.moneyDeposit = depositAmount.value;
