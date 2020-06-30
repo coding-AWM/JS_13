@@ -50,7 +50,11 @@ class AppData {
         this.budgetMonth = 0;
         this.expensesMonth = 0;
     }
+
+
+
     start() {
+        this.percentSheck();
         if (salaryAmount.value === '') {
             alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
             return;
@@ -187,7 +191,7 @@ class AppData {
     };
 
     getInfoDeposit() {
-        
+
         if (this.deposit) {
             // do {
             //     alert( 'введи т 0 до 20');
@@ -272,18 +276,27 @@ class AppData {
             depositBank.removeEventListener('change', this.changePercent)
         }
     }
+    percentSheck() {
+        if (+depositPercent.value < 0 || +depositPercent.value > 100) {
+            alert('ВВедите проценты от 1 до 100');
+            depositPercent.value = '';
+            buttonCalculate.disabled = true;
+        } else {
+            buttonCalculate.disabled = false;
+        }
+    }
 
     eventsListeners() {
+        depositPercent.addEventListener('change', this.percentSheck.bind(this));
         buttonCancel.addEventListener('click', this.reset.bind(this));
         buttonCalculate.addEventListener('click', this.start.bind(this));
         addExpensesButton.addEventListener('click', this.addExpensesBlock.bind(this));
         addIncomeButton.addEventListener('click', this.addAmountBlock.bind(this));
         periodSelect.addEventListener('change', this.eventFunc.bind(this));
         depositCheck.addEventListener('change', this.depositHandler.bind(this));
-
     }
 };
 
-
 const appData = new AppData();
+// appData.percentSheck();
 appData.eventsListeners();
