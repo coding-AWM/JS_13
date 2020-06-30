@@ -187,8 +187,14 @@ class AppData {
     };
 
     getInfoDeposit() {
-        if (this.deposit) {            
+        
+        if (this.deposit) {
+            // do {
+            //     alert( 'введи т 0 до 20');
+            //     depositPercent.value = 7;
+            // } while (depositPercent.value > 20)
             this.percentDeposit = depositPercent.value;
+            console.log('this.percentDeposit: ', this.percentDeposit);
             this.moneyDeposit = depositAmount.value;
         }
     };
@@ -208,7 +214,7 @@ class AppData {
     };
 
     getBudget() {
-        const monthDeposit = Math.ceil(this.moneyDeposit * this.percentDeposit) / 12;
+        const monthDeposit = Math.ceil(this.moneyDeposit * this.percentDeposit);
         this.budgetMonth = +this.budget + +this.incomeMonth - +this.expensesMonth + monthDeposit;
         this.budgetDay = Math.floor(this.budgetMonth / 30);
     };
@@ -240,9 +246,13 @@ class AppData {
     changePercent() {
         const valueSelect = this.value;
         if (valueSelect === 'other') {
+            depositPercent.style.display = 'inline-block';
+            depositPercent.disabled = false;
             //домашка
         } else {
-            depositPercent.value = valueSelect;
+            // depositPercent.value = valueSelect;
+            depositPercent.disabled = true;
+            depositPercent.style.display = 'none';
         }
 
     }
