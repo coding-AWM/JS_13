@@ -52,7 +52,7 @@ class AppData {
     }
 
     start() {
-        this.percentSheck();
+        // this.percentSheck();
         if (salaryAmount.value === '') {
             alert('Ошибка! Поле "месячный доход" должнобыть заполнено');
             return;
@@ -265,6 +265,7 @@ class AppData {
             depositAmount.style.display = 'inline-block';
             this.deposit = true;
             depositBank.addEventListener('change', this.changePercent);
+            this.percentSheck;
         } else {
             depositBank.style.display = 'none';
             depositAmount.style.display = 'none';
