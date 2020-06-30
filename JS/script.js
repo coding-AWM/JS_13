@@ -51,8 +51,6 @@ class AppData {
         this.expensesMonth = 0;
     }
 
-
-
     start() {
         this.percentSheck();
         if (salaryAmount.value === '') {
@@ -281,6 +279,10 @@ class AppData {
             alert('ВВедите проценты от 1 до 100');
             depositPercent.value = '';
             buttonCalculate.disabled = true;
+        } else if (!isNumber(depositPercent.value)) {
+            alert('ВВедите число');
+            depositPercent.value = '';
+            buttonCalculate.disabled = true;
         } else {
             buttonCalculate.disabled = false;
         }
@@ -298,5 +300,4 @@ class AppData {
 };
 
 const appData = new AppData();
-// appData.percentSheck();
 appData.eventsListeners();
